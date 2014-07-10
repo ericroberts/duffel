@@ -8,9 +8,9 @@ Gem::Specification.new do |spec|
   spec.version       = Duffel::VERSION
   spec.authors       = ["Eric Roberts"]
   spec.email         = ["ericroberts@gmail.com"]
-  spec.summary       = %q{TODO: Write a short summary. Required.}
-  spec.description   = %q{TODO: Write a longer description. Optional.}
-  spec.homepage      = ""
+  spec.summary       = "Fetch your environment settings."
+  spec.description   = "Fetch your environment settings. Raise errors or set defaults when a setting does not exist."
+  spec.homepage      = "https://github.com/ericroberts/duffel"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0")

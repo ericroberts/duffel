@@ -1,6 +1,6 @@
 # Duffel
 
-TODO: Write a gem description
+Fetch your environment settings. Raise errors or set defaults when a setting does not exist.
 
 ## Installation
 
