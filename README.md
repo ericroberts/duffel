@@ -60,7 +60,7 @@ Calling `Settings.env_variable_name` will still return you your environment vari
 
 I know.  
 
-### Why did you do it this way and not this [obviously better way]
+### Why did you do it this way and not [obviously better way]?
 
 Because I probably don't know the obviously better way. Feel free to submit a pull request or open an issue and I'll look into it!
 
