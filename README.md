@@ -28,19 +28,19 @@ Simple, right? But why add a layer of abstraction here? Well, there are a few re
 
 Most people get their environment variables like so: `ENV['SUPER_SECRET_PASSWORD']`. This will return nil if the variable is not found. Duffel will return a KeyError, so you are told about missing things.
 
-*But I don't want it to raise an exception!*
+### But I don't want it to raise an exception!
 
 That's fine too, you can specify a fallback for Duffel in case something isn't found. Example:
 
     Duffel.super_secret_password(fallback: 'another-password')
 
-*What if I want to just return nil if it's not found?*
+### What if I want to just return nil if it's not found?
 
 No problem, we can set our fallback to nil:
 
     Duffel.super_secret_password(fallback: nil)
 
-*What about other settings I might have?*
+### What about other settings I might have?
 
 I actually started writing this because I noticed was using a combination of `ENV['SOME_VARIABLE_NAME_HERE']` and `Settings.some_method_name`. I wanted to just use the `Settings.method_name` pattern everywhere, so I wrote Duffel.
 
@@ -57,11 +57,11 @@ Let's say you wanted to actually have a constant called Settings in Duffel. You 
 
 Calling `Settings.env_variable_name` will still return you your environment variable, should it exist.
 
-*Duffel is a stupid name*
+### Duffel is a stupid name
 
 I know.  
 
-*Why did you do it this way and not this [obviously better way]*
+### Why did you do it this way and not this [obviously better way]
 
 Because I probably don't know the obviously better way. Feel free to submit a pull request or open an issue and I'll look into it!
 
