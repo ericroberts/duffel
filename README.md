@@ -46,10 +46,9 @@ I actually started writing this because I noticed was using a combination of `EN
 
 So while Duffel by default gets things out of your environment, you can use it as a general purpose settings drawer.
 
-Let's say you wanted to actually have a constant called Settings in Duffel. You could do something like this:
+Let's say you wanted to actually have a constant called Settings but still take advantage of Duffel. You could do something like this:
 
     class Settings < Duffel
-
       def self.some_other_awesome_setting
         'awesome setting return value'
       end
