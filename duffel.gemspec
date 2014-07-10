@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.version       = Duffel::VERSION
   spec.authors       = ["Eric Roberts"]
   spec.email         = ["ericroberts@gmail.com"]
-  spec.summary       = "Fetch your environment settings."
-  spec.description   = "Fetch your environment settings. Raise errors or set defaults when a setting does not exist."
+  spec.summary       = "Fetch your environment variables."
+  spec.description   = "Fetch your environment variables. Raise errors or set defaults when a setting does not exist."
   spec.homepage      = "https://github.com/ericroberts/duffel"
   spec.license       = "MIT"
 

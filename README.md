@@ -1,6 +1,6 @@
 # Duffel
 
-Fetch your environment settings. Raise errors or set defaults when a setting does not exist.
+Fetch your environment variables. Raise errors or set defaults when a variable does not exist.
 
 ## Installation
 
