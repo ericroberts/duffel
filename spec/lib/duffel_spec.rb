@@ -1,6 +1,8 @@
 require 'duffel'
 
 describe Duffel do
+  subject { Duffel }
+
   it 'should not raise an error' do
     expect { subject }.to_not raise_error
   end
