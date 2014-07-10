@@ -7,7 +7,7 @@ module Duffel
     end
 
     define_singleton_method(method) do |options=(args.first || {})|
-      return_value = options.to_h.fetch(:fallback, fetch_default)
+      return_value = options.fetch(:fallback, fetch_default)
       fallback = return_value.is_a?(Proc) ? return_value : lambda { |key| return_value }
 
       env_name = method.to_s.upcase
