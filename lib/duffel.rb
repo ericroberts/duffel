@@ -1,5 +1,5 @@
 class Duffel
-  VERSION = "0.0.2"
+  VERSION = "0.0.1"
 
   def self.method_missing(method, *args, &block)
     fetch_default = lambda do |key|
