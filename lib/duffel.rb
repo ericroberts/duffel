@@ -1,6 +1,6 @@
-require "duffel/version"
+class Duffel
+  VERSION = "0.0.2"
 
-module Duffel
   def self.method_missing(method, *args, &block)
     fetch_default = lambda do |key|
       raise KeyError.new("key not found: #{key}")
