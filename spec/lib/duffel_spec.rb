@@ -35,6 +35,12 @@ describe Duffel do
           ).to eq 'foo'
         end
 
+        it 'should allow nothing to be passed and to raise a key error' do
+          expect{
+            subject.another_non_existing_method
+          }.to raise_error KeyError
+        end
+
         context 'fallback is nil' do
           it 'should return nil' do
             expect(
@@ -55,6 +61,12 @@ describe Duffel do
             expect(
               subject.yet_another_non_existing_method(:fallback => 'bar')
             ).to eq 'bar'
+          end
+
+          it 'should allow nothing to be passed and to raise a key error' do
+            expect{
+              subject.yet_another_non_existing_method
+            }.to raise_error KeyError
           end
         end
       end
@@ -78,6 +90,10 @@ describe Duffel do
       it 'should be idempotent' do
         expect(subject.an_existing_method).to eq response
         expect(subject.an_existing_method).to eq response
+      end
+
+      it 'should not return the fallback when the env variable exists' do
+        expect(subject.an_existing_method(fallback: 'foo')).to eq response
       end
     end
   end

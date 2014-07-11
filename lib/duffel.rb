@@ -4,14 +4,15 @@ class Duffel
   class << self
 
     def method_missing(method, *args, &block)
-      define_singleton_method(method) do |options=(args.first || {})|
+      define_singleton_method(method) do |options={}|
+        options ||= {}
         return_value = options.fetch(:fallback, fetch_default)
         fallback = format_return_value(return_value)
 
         env_name = method.to_s.upcase
         ENV.fetch(env_name, &fallback)
       end
-      self.send(method)
+      self.send(method, args.first)
     end
 
   protected
