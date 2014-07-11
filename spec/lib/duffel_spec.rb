@@ -20,11 +20,41 @@ describe Duffel do
           ).to eq 'blah'
         end
 
+        it 'should be idempotent' do
+          expect(
+            subject.another_non_existing_method(:fallback => 'blah')
+          ).to eq 'blah'
+          expect(
+            subject.another_non_existing_method(:fallback => 'blah')
+          ).to eq 'blah'
+        end
+
+        it 'should allow a different fallback the next time it is called' do
+          expect(
+            subject.another_non_existing_method(:fallback => 'foo')
+          ).to eq 'foo'
+        end
+
         context 'fallback is nil' do
           it 'should return nil' do
             expect(
               subject.yet_another_non_existing_method(:fallback => nil)
             ).to eq nil
+          end
+
+          it 'should be idempotent' do
+            expect(
+              subject.yet_another_non_existing_method(:fallback => nil)
+            ).to eq nil
+            expect(
+              subject.yet_another_non_existing_method(:fallback => nil)
+            ).to eq nil
+          end
+
+          it 'should allow a different fallback the next time it is called' do
+            expect(
+              subject.yet_another_non_existing_method(:fallback => 'bar')
+            ).to eq 'bar'
           end
         end
       end
