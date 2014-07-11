@@ -31,10 +31,22 @@ describe Duffel do
     end
 
     context 'with a matching environment variable' do
-      before { expect(ENV).to receive(:fetch).with('AN_EXISTING_METHOD').and_return(response) }
+      before do
+        allow(ENV).to(
+          receive(:fetch).
+          with('AN_EXISTING_METHOD').
+          and_return(response)
+        )
+      end
+
       let(:response) { 'response' }
 
       it 'should return the env variable' do
+        expect(subject.an_existing_method).to eq response
+      end
+
+      it 'should be idempotent' do
+        expect(subject.an_existing_method).to eq response
         expect(subject.an_existing_method).to eq response
       end
     end
