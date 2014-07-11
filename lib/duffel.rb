@@ -1,18 +1,33 @@
 class Duffel
   VERSION = "0.0.1"
 
-  def self.method_missing(method, *args, &block)
-    fetch_default = lambda do |key|
-      raise KeyError.new("key not found: #{key}")
+  class << self
+
+    def method_missing(method, *args, &block)
+      define_singleton_method(method) do |options=(args.first || {})|
+        return_value = options.fetch(:fallback, fetch_default)
+        fallback = format_return_value(return_value)
+
+        env_name = method.to_s.upcase
+        ENV.fetch(env_name, &fallback)
+      end
+      self.send(method)
     end
 
-    define_singleton_method(method) do |options=(args.first || {})|
-      return_value = options.fetch(:fallback, fetch_default)
-      fallback = return_value.is_a?(Proc) ? return_value : lambda { |key| return_value }
+  protected
 
-      env_name = method.to_s.upcase
-      ENV.fetch(env_name, &fallback)
+    def format_return_value(value)
+      if value.is_a?(Proc)
+        value
+      else
+        lambda { |_key| value }
+      end
     end
-    self.send(method)
+
+    def fetch_default
+      lambda do |key|
+        raise KeyError.new("key not found: #{key}")
+      end
+    end
   end
 end
